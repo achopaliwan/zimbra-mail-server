@@ -1,0 +1,69 @@
+Agar memudahkan silakan unduh dan jalankan script berikut untuk konfigurasi otomatis /etc/hosts , hostname, dan membuat internal DNS menggunakan BIND *
+
+curl -k https://raw.githubusercontent.com/imanudin11/zimbra-auto-install/master/setup-zimbra-ubuntu18.sh > /tmp/setup-zimbra-ubuntu18.sh
+chmod +x /tmp/setup-zimbra-ubuntu18.sh
+/tmp/setup-zimbra-ubuntu18.sh
+
+Isikan hostname, domain, dan IP lokal.
+
+[INFO] : Configuring hostname, /etc/hosts and resolv.conf
+Please insert your Hostname. Example mail :email
+Please insert your Domain name. Example imanudin.net : delameta.com
+Please insert your IP Address : 192.168.132.200
+
+Setelah itu install Zimbra dengan mengunduh, ekstrak, dan jalankan install.sh
+
+cd /opt/
+wget -c https://files.zimbra.com/downloads/8.8.15_GA/zcs-8.8.15_GA_3869.UBUNTU18_64.20190917004220.tgz
+tar -zxvf zcs-8.8.15_GA_3869.UBUNTU18_64.20190917004220.tgz
+cd zcs-8.8.15_GA_3869.UBUNTU18_64.20190917004220
+./install.sh
+
+Ketik Y saat ditanya :
+– Do you agree with the terms of the software license agreement? [N] y
+– Use Zimbra’s package repository [Y] y
+
+Selanjutnya ketik "Y" untuk semua paket kecuali pada zimbra-dnscache and zimbra-imapd. zimbra-dnscache tidak digunakan karena sudah menggunakan Bind untuk internal DNS sedangkan zimbra-imapd saat tulisan ini dibuat masih versi BETA.
+
+Select the packages to install
+
+Install zimbra-ldap [Y] y
+Install zimbra-logger [Y] y
+Install zimbra-mta [Y] y
+Install zimbra-dnscache [Y] N
+Install zimbra-snmp [Y] y
+Install zimbra-store [Y] y
+Install zimbra-apache [Y] y
+Install zimbra-spell [Y] y
+Install zimbra-memcached [Y] y
+Install zimbra-proxy [Y] y
+Install zimbra-drive [Y] y
+Install zimbra-imapd (BETA - for evaluation only) [N] N
+Install zimbra-chat [Y] y
+Checking required space for zimbra-core
+Checking space for zimbra-store
+Checking required packages for zimbra-store
+zimbra-store package check complete.
+
+Installing:
+    zimbra-core
+    zimbra-ldap
+    zimbra-logger
+    zimbra-mta
+    zimbra-snmp
+    zimbra-store
+    zimbra-apache
+    zimbra-spell
+    zimbra-memcached
+    zimbra-proxy
+    zimbra-drive
+    zimbra-patch
+    zimbra-mta-patch
+    zimbra-proxy-patch
+    zimbra-chat
+
+The system will be modified.  Continue? [N] y
+
+ketikkan "Y" saat ditanya The system will be modified. Continue?[N] Y
+
+Jika muncul pesan seperti di bawah ini
